@@ -1,0 +1,23 @@
+image: "maven:3.3.9-jdk-8"
+
+services:
+     - "mysql:5.7"
+
+stages:
+  - test
+  - build
+
+maven-test:
+  stage: test
+  script: "mvn test"
+  
+maven-build:
+  stage: build
+  script: "mvn package"
+  
+variables:
+  MYSQL_DATABASE: springDB
+  MYSQL_USER: root
+  MYSQL_PASSWORD: root
+  MYSQL_ROOT_PASSWORD: root
+  MYSQL_HOST: localhost
